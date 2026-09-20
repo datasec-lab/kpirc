@@ -1,0 +1,50 @@
+[package]
+name = "common_tool"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "common_tool"
+path = "src/lib.rs"
+
+[dev-dependencies]
+# strum = "0.24.1" # 遍历enum
+criterion = "0.3"
+
+[[bench]]
+name = "ecc_benchmark"
+harness = false
+
+
+# [profile.release]
+# lto = "fat"
+# codegen-units = 1
+# panic = "abort"
+
+
+[dependencies]
+log = "0.4"
+env_logger = "0.9"
+rand = "0.8"
+rand_core = "0.6.2" # 提供核心trait
+rand_chacha = "0.3"
+
+encoding_rs = "0.8.31"
+bytes = "1"
+aes = "0.8" # default is ecb mode
+ctr = "0.9"
+cbc = "0.1" # provide cbc mode
+cipher = {version = "0.4.3", features=["block-padding"]}
+
+sha2 = "0.9.9"
+
+
+rug = "1.17.0"
+# curve25519-dalek = {version = "3.2.1", features = ["simd_backend"]}
+curve25519-dalek = "3.2.1"
+lazy_static = "1.4.0"
+
+bytebuffer = "2.0.1"
+
+rayon = "1.7.0"
