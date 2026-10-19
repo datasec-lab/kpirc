@@ -318,7 +318,7 @@ The preceding routines generate memory and communication estimates for our schem
 
 See [`plots/README.md`](plots/README.md) for instructions on regenerating both figures.
 
-### Baseline Implementations
+## Baseline Implementations
 
 The following baseline implementations were independently benchmarked on the same machine used for our experiments:
 
