@@ -284,6 +284,7 @@ mod tests {
         let mut client_gen_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_decode_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_times_sec = Vec::with_capacity(num_measured_runs);
+        let mut server_times_sec = Vec::with_capacity(num_measured_runs);
         let mut uploads_kb = Vec::with_capacity(num_measured_runs);
         let mut downloads_kb = Vec::with_capacity(num_measured_runs);
 
@@ -329,6 +330,7 @@ mod tests {
             let client_time_sec = client_gen_time + client_decode_time;
 
             let online_time_sec = start_time_online.elapsed().as_secs_f64();
+            let server_time_sec = online_time_sec - client_time_sec;
 
             assert_eq!(
                 &result[bff_params.key_byte_len()..],
@@ -346,6 +348,7 @@ mod tests {
                 client_gen_times_sec.push(client_gen_time);
                 client_decode_times_sec.push(client_decode_time);
                 client_times_sec.push(client_time_sec);
+                server_times_sec.push(server_time_sec);
                 uploads_kb.push(upload);
                 downloads_kb.push(download);
             }
@@ -355,6 +358,7 @@ mod tests {
         let avg_client_gen_sec = average(&client_gen_times_sec);
         let avg_client_decode_sec = average(&client_decode_times_sec);
         let avg_client_sec = average(&client_times_sec);
+        let avg_server_sec = average(&server_times_sec);
         let avg_upload_kb = average(&uploads_kb);
         let avg_download_kb = average(&downloads_kb);
         let avg_total_sec = avg_offline_sec + avg_online_sec;
@@ -378,6 +382,10 @@ mod tests {
         println!(
             "Avg client-side time ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_client_sec
+        );
+        println!(
+            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!("Avg total time: {:.6} s", avg_total_sec);
         println!("Avg upload size: {} KB", avg_upload_kb);
@@ -455,6 +463,7 @@ mod tests {
         let mut client_gen_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_decode_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_times_sec = Vec::with_capacity(num_measured_runs);
+        let mut server_times_sec = Vec::with_capacity(num_measured_runs);
         let mut selection_vector_times_sec = Vec::with_capacity(num_measured_runs);
         let mut inner_product_times_sec = Vec::with_capacity(num_measured_runs);
         let mut uploads_kb = Vec::with_capacity(num_measured_runs);
@@ -511,6 +520,7 @@ mod tests {
             let client_time_sec = client_gen_time + client_decode_time;
 
             let online_time_sec = start_time_online.elapsed().as_secs_f64();
+            let server_time_sec = online_time_sec - client_time_sec;
 
             assert_eq!(
                 &result[bff_params.key_byte_len()..],
@@ -528,6 +538,7 @@ mod tests {
                 client_gen_times_sec.push(client_gen_time);
                 client_decode_times_sec.push(client_decode_time);
                 client_times_sec.push(client_time_sec);
+                server_times_sec.push(server_time_sec);
                 selection_vector_times_sec.push(selection_vector_time_sec);
                 inner_product_times_sec.push(inner_product_time_sec);
                 uploads_kb.push(upload);
@@ -539,6 +550,7 @@ mod tests {
         let avg_client_gen_sec = average(&client_gen_times_sec);
         let avg_client_decode_sec = average(&client_decode_times_sec);
         let avg_client_sec = average(&client_times_sec);
+        let avg_server_sec = average(&server_times_sec);
         let avg_selection_vector_sec = average(&selection_vector_times_sec);
         let avg_inner_product_sec = average(&inner_product_times_sec);
         let avg_upload_kb = average(&uploads_kb);
@@ -560,6 +572,10 @@ mod tests {
         println!(
             "Avg client-side time ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_client_sec
+        );
+        println!(
+            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!(
             "Avg selection vector time ({} runs, {} warmup): {:.6} s",
@@ -618,6 +634,7 @@ mod tests {
         let mut client_gen_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_decode_times_sec = Vec::with_capacity(num_measured_runs);
         let mut client_times_sec = Vec::with_capacity(num_measured_runs);
+        let mut server_times_sec = Vec::with_capacity(num_measured_runs);
         let mut selection_vector_times_sec = Vec::with_capacity(num_measured_runs);
         let mut inner_product_times_sec = Vec::with_capacity(num_measured_runs);
         let mut uploads_kb = Vec::with_capacity(num_measured_runs);
@@ -656,6 +673,7 @@ mod tests {
             let client_time_sec = client_gen_time + client_decode_time;
 
             let online_time_sec = start_time_online.elapsed().as_secs_f64();
+            let server_time_sec = online_time_sec - client_time_sec;
 
             let result: Vec<u8> = result.iter().map(|r| *r as u8).collect();
 
@@ -672,6 +690,7 @@ mod tests {
                 client_gen_times_sec.push(client_gen_time);
                 client_decode_times_sec.push(client_decode_time);
                 client_times_sec.push(client_time_sec);
+                server_times_sec.push(server_time_sec);
                 selection_vector_times_sec.push(selection_vector_time_sec);
                 inner_product_times_sec.push(inner_product_time_sec);
                 uploads_kb.push(upload);
@@ -683,6 +702,7 @@ mod tests {
         let avg_client_gen_sec = average(&client_gen_times_sec);
         let avg_client_decode_sec = average(&client_decode_times_sec);
         let avg_client_sec = average(&client_times_sec);
+        let avg_server_sec = average(&server_times_sec);
         let avg_selection_vector_sec = average(&selection_vector_times_sec);
         let avg_inner_product_sec = average(&inner_product_times_sec);
         let avg_upload_kb = average(&uploads_kb);
@@ -704,6 +724,10 @@ mod tests {
         println!(
             "Avg client-side time ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_client_sec
+        );
+        println!(
+            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!(
             "Avg selection vector time ({} runs, {} warmup): {:.6} s",
