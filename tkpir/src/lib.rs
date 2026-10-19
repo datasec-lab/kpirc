@@ -384,7 +384,7 @@ mod tests {
             num_measured_runs, num_warmup_runs, avg_client_sec
         );
         println!(
-            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            "Avg online (server side) ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!("Avg total time: {:.6} s", avg_total_sec);
@@ -574,7 +574,7 @@ mod tests {
             num_measured_runs, num_warmup_runs, avg_client_sec
         );
         println!(
-            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            "Avg online (server side) ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!(
@@ -726,7 +726,7 @@ mod tests {
             num_measured_runs, num_warmup_runs, avg_client_sec
         );
         println!(
-            "Avg server-side time ({} runs, {} warmup): {:.6} s",
+            "Avg online (server side) ({} runs, {} warmup): {:.6} s",
             num_measured_runs, num_warmup_runs, avg_server_sec
         );
         println!(
