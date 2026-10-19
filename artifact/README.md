@@ -306,3 +306,24 @@ Outputs are written to:
 
 * `results/communication_costs/tcwkpir_comm_costs.csv`
 * `results/communication_costs/tcakpir_comm_costs.csv`
+
+#### Reproducing Figures 5 and 6
+
+The Python plotting scripts and CSV inputs for Figures 5 and 6 are included in the `plots/` directory. The CSV files contain the measurements from our benchmarks and the external baselines used in the figures.
+
+- **Figure 5:** `plots/plot_sv_memory.py`
+- **Figure 6:** `plots/plot_all_four_comm.py`
+
+The preceding routines generate memory and communication estimates for our schemes. The provided CSV inputs also include the benchmark measurements used to produce the figures.
+
+See [`plots/README.md`](plots/README.md) for instructions on regenerating both figures.
+
+### Baseline Implementations
+
+The following baseline implementations were independently benchmarked on the same machine used for our experiments:
+
+- **CWKPIR [19]** (in C++): https://github.com/RasoulAM/constant-weight-pir
+- **ChalametPIR [22]** (in Rust): https://github.com/claucece/chalamet
+- **Hao et al. [25]** (in Java): https://github.com/alibaba-edu/mpc4j
+
+These implementations are maintained in separate repositories and are not included in this artifact. Please refer to their respective repositories for installation and execution instructions.

@@ -18,20 +18,19 @@ This repository provides the implementation and evaluation artifacts for our pap
 ```text
 .
 ├── README.md
-├── .gitignore
+├── LICENSE
 ├── artifact/
-│   └── README.md
+│   ├── README.md
+│   └── plots/
 ├── scripts/
 ├── results/
 └── tkpir/
     ├── Cargo.toml
     ├── Cargo.lock
-    ├── benches/bench.rs
     ├── common_tool/
     └── src/
         ├── lib.rs
-        └── bin/
-            └── bench_kpir_c_multi.rs
+        └── bin/bench_kpir_c_multi.rs
 ```
 
 ## Requirements
