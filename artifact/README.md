@@ -17,7 +17,9 @@ The required resources depend on the experiment:
 
 * **Quick check:** 8 GB RAM is expected to be sufficient for the `m = 2^12`, `8 B` validation runs. These experiments use 1 CPU thread.
 
-* **Tables IV, V, and IX:** 8 GB RAM is expected to be sufficient. These experiments use 1 CPU thread and evaluate databases up to `m = 2^16`.
+* **Tables IV and V:** 8 GB RAM is expected to be sufficient. These experiments use 1 CPU thread and evaluate databases up to `m = 2^16`.
+
+* **Table IX:** 8 GB RAM is expected to be sufficient. The reported client-side runtimes use 64 CPU threads.
 
 * **Table VII:** 32 GB RAM is recommended for the largest configurations (`m = 2^20`). The reported runtimes use 64 CPU threads.
 
@@ -144,6 +146,7 @@ On systems with Bash, the reported experiments can be reproduced from the reposi
 bash scripts/reproduce_table_iv.sh
 bash scripts/reproduce_table_v.sh
 bash scripts/reproduce_table_vii.sh
+bash scripts/reproduce_table_ix.sh
 bash scripts/reproduce_table_x.sh --quick
 ```
 
@@ -200,7 +203,7 @@ Use the following configurations:
 | IV    | `TCWKPIR`, `TCAKPIR`                |         1 | `12`, `14`, `16` | `64`, `1024`          |
 | V     | `TCAKPIR`, `TCAKPIR_OPT`            |         1 | `12`, `16`       | `64`, `1024`          |
 | VII   | `TCWKPIR`, `TCAKPIR`, `TCAKPIR_OPT` |        64 | `16`, `18`, `20` | `512`, `1024`, `2048` |
-| IX    | `TCWKPIR`, `TCAKPIR`, `TCAKPIR_OPT` |         1 | `12`, `14`, `16` | `64`, `1024`          |
+| IX    | `TCWKPIR`, `TCAKPIR`, `TCAKPIR_OPT` |         64 | `12`, `14`, `16` | `64`, `1024`          |
 
 `LOG_M = x` corresponds to `m = 2^x`. `DATA_BITS` is the entry size in bits:
 
@@ -208,14 +211,6 @@ Use the following configurations:
 * `512` = `64 B`
 * `1024` = `128 B`
 * `2048` = `256 B`
-
-Table IX uses the client-side timings produced by the corresponding single-query runs:
-
-* `Avg client-side encode time` corresponds to Query
-* `Avg client-side decode time` corresponds to Recover
-* `Avg client-side time` corresponds to Total
-
-Separate executions are therefore not required when those configurations have already been run.
 
 ### 2) KPIR-C Multi-Query Benchmark — Table X
 

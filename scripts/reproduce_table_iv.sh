@@ -123,7 +123,7 @@ run_case() {
   local avg_inner_product_s
   avg_inner_product_s="$(extract_avg_seconds "Avg inner product time (" "$tmp_output")"
   local avg_online_s
-  avg_online_s="$(extract_avg_seconds "Avg online time (" "$tmp_output")"
+  avg_online_s="$(extract_avg_seconds "Avg online (server side) (" "$tmp_output")"
   local avg_client_encode_s
   avg_client_encode_s="$(extract_avg_seconds "Avg client-side encode time (" "$tmp_output")"
   local avg_client_decode_s

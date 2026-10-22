@@ -72,6 +72,7 @@ The full reproduction scripts are:
 bash scripts/reproduce_table_iv.sh
 bash scripts/reproduce_table_v.sh
 bash scripts/reproduce_table_vii.sh
+bash scripts/reproduce_table_ix.sh
 bash scripts/reproduce_table_x.sh --quick
 ```
 
